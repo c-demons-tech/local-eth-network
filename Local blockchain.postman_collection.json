@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "e38111b3-5de2-4766-b7cb-dc6a5eba01db",
+		"name": "Local blockchain",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test Blockchain connectivity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"admin_peers\",\n    \"params\": []\n}"
+				},
+				"url": {
+					"raw": "localhost:8545",
+					"host": [
+						"localhost"
+					],
+					"port": "8545"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting latest block",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 2,\n    \"method\": \"eth_blockNumber\",\n    \"params\": []\n}"
+				},
+				"url": {
+					"raw": "localhost:8545",
+					"host": [
+						"localhost"
+					],
+					"port": "8545"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting primary account address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 3,\n    \"method\": \"eth_accounts\",\n    \"params\": []\n}"
+				},
+				"url": {
+					"raw": "localhost:8545",
+					"host": [
+						"localhost"
+					],
+					"port": "8545"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check account balance",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 4,\n    \"method\": \"eth_getBalance\",\n    \"params\": [\n        \"0x3c1fb59b8b2f863316bc44a8c46876e884d3f7dc\",\n        \"latest\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost:8545",
+					"host": [
+						"localhost"
+					],
+					"port": "8545"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating another account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 5,\n    \"method\": \"personal_newAccount\",\n    \"params\": [\n        \"5uper53cr3t\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8545",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8545"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check if sender is unlocked",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 6,\n    \"method\": \"personal_unlockAccount\",\n    \"params\": [\n        \"0xbaf8266a80fdaa95942ea043a87e2efb0d42b9eb\",\n        \"5uper53cr3t\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8545",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8545"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transferring funds",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 7,\n    \"method\": \"eth_sendTransaction\",\n    \"params\": [\n        {\n            \"from\": \"0xbaf8266a80fdaa95942ea043a87e2efb0d42b9eb\",\n            \"to\": \"0x3c1fb59b8b2f863316bc44a8c46876e884d3f7dc\",\n            \"value\": \"0xf4240\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost:8545",
+					"host": [
+						"localhost"
+					],
+					"port": "8545"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get status of transaction by hash",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 8,\n    \"method\": \"eth_getTransactionByHash\",\n    \"params\": [\n        \"0x4b76f58cfd7b63ff63b972fdbf41245ed989a4e22457106e689de391d63d9f88\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "localhost:8545",
+					"host": [
+						"localhost"
+					],
+					"port": "8545"
+				}
+			},
+			"response": []
+		}
+	]
+}
